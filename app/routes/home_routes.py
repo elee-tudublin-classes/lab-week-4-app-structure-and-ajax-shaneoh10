@@ -53,3 +53,19 @@ async def params(request: Request, name: str | None = ""):
     """Handle http get requests for the /params route and return the params.html page"""
 
     return templates.TemplateResponse("params.html", {"request": request, "name": name})
+
+
+@router.post("/clicked", response_class=HTMLResponse)
+async def clicked(request: Request):
+    """Handle http post requests for the htmx /clicked route and return clicked_button.html"""
+    return templates.TemplateResponse(
+        "./partials/clicked_button.html", {"request": request}
+    )
+
+
+@router.get("/server_time", response_class=HTMLResponse)
+async def server_time(request: Request):
+    """Handle http get requests for the /server_time route and return server time"""
+    server_time: datetime = datetime.now().strftime("%d/%m/%y %H:%M:%S")
+
+    return server_time
