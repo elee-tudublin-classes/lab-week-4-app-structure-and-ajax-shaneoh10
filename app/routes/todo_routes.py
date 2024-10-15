@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.services.todo_service import add_todo, get_all_todos
 
-router = APIRouter(prefix="/todo")
+router = APIRouter(prefix="/todo", tags=["todo"])
 
 
 templates = Jinja2Templates(directory="app/view_templates")
